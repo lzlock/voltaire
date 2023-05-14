@@ -1,7 +1,6 @@
 <script>
   import { onMount } from 'svelte';
   import fuse from 'fuse.js';
-  export let data;  
 
   let docs = [];
   let pageIndex = 0;
@@ -36,18 +35,17 @@
   $: updatePage(filteredDocs, pageIndex);
 
   onMount(async () => {
-    const response = await fetch('/doc');
-    const db = await response.json();
-    docs = db.docs;
+    const response = await fetch('/data.json');
+    docs = await response.json();
     loading = false;
   });
 
   export const snapshot = {
-      capture: () => ({ pageIndex, searchText }),
-      restore: (value) => {
-          pageIndex = value.pageIndex;
-          searchText = value.searchText;
-      }
+    capture: () => ({ pageIndex, searchText }),
+    restore: (value) => {
+      pageIndex = value.pageIndex;
+      searchText = value.searchText;
+    }
   };
 </script>
 

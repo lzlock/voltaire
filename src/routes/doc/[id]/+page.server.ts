@@ -6,3 +6,17 @@ export const load = async ({ params }) => {
     'doc': db.docs.find(row => row['ID'] == params.id),
   }
 }
+
+export const entries = () => {
+  const entries = db.docs.map(row => ({
+      'id': row['ID'].toString(),
+    })
+  );
+  for (let entry of entries) {
+    if (!entry.id) {
+      console.log(entry);
+    }
+  }
+
+  return entries;
+}
