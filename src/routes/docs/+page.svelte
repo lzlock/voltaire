@@ -74,7 +74,7 @@
 
 <main class="container-fluid">
   <input
-    type="text"
+    type="search"
     value={searchText}
     placeholder="Search..."
     on:change={(event) => {
@@ -103,21 +103,23 @@
   {:else if filteredDocs.length === 0}
     <p>No results found.</p>
   {:else}
-    <table role="grid">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Year</th>
-        </tr>
-      </thead>
-      <tbody>
-        {#each pageDocs as row}
+    <figure>
+      <table role="grid">
+        <thead>
           <tr>
-            <td><a href="/docs/{row['ID']}">{row['Title']}</a></td>
-            <td>{row['Stated date of publication']}</td>
+            <th>Title</th>
+            <th>Stated Year</th>
           </tr>
-        {/each}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {#each pageDocs as row}
+            <tr>
+              <td><a href="/docs/{row['ID']}">{row['Title']}</a></td>
+              <td>{row['Stated date of publication']}</td>
+            </tr>
+          {/each}
+        </tbody>
+      </table>
+    </figure>
   {/if}
 </main>
