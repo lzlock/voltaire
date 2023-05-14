@@ -2,7 +2,7 @@
   import '@picocss/pico';
 </script>
 
-<div class="root">
+<div id="root">
   <header class="container-fluid">
     <nav>
       <ul>
@@ -22,13 +22,9 @@
     --font-size: 1rem !important;
   }
 
-  .root > header, .root > main, .root > footer {
+  :global(#root > header, #root > main, #root > footer) {
     padding-top: var(--spacing);
     padding-bottom: var(--spacing);
     /* --block-spacing-vertical: calc(var(--spacing)) !important; */
-  }
-  
-  h1 {
-    margin: 0;
-  }
+  } 
 </style>

@@ -1,3 +1,7 @@
+<svelte:head>
+  <title>{doc['Title']} - Voltaire Project</title>
+</svelte:head>
+
 <script>
   export let data;
   const doc = data.doc;

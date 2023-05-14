@@ -1,3 +1,7 @@
+<svelte:head>
+  <title>Voltaire Project</title>
+</svelte:head>
+
 <main class="container">
   <h1>All of Voltaire, in one place</h1>
   <p>

@@ -26,6 +26,25 @@
     pageMax = Math.floor(docs.length / pageSize);
   };
 
+  const debounceInput = (node) => {
+    let timer;
+
+    const handler = () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        node.dispatchEvent(new Event('change'));
+      }, 200);
+    };
+
+    node.addEventListener('input', handler);
+
+    return {
+      destroy() {
+        node.removeEventListener('input', handler);
+      }
+    };
+  };
+
   $: updateFilter(docs, searchText);
   $: updatePage(filteredDocs, pageIndex);
 
@@ -49,8 +68,21 @@
   };
 </script>
 
+<svelte:head>
+  <title>Explore - Voltaire Project</title>
+</svelte:head>
+
 <main class="container-fluid">
-  <input type="text" bind:value={searchText} placeholder="Search..." on:input={() => pageIndex = 0} />
+  <input
+    type="text"
+    value={searchText}
+    placeholder="Search..."
+    on:change={(event) => {
+      pageIndex = 0;
+      searchText = event.target.value;
+    }}
+    use:debounceInput
+  />
 
   <nav>
     <ul> 
