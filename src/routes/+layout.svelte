@@ -2,16 +2,30 @@
   import '@picocss/pico';
 </script>
 
-<header class="container-fluid">
-  <h1><a href="/">Voltaire Project</a></h1>
-</header>
-<main class="container-fluid">
+<div class="root">
+  <header class="container-fluid">
+    <nav>
+      <ul>
+        <li><strong><a href="/">Voltaire Project</a></strong></li>
+      </ul>
+      <ul>
+        <li><a href="/docs">Explore</a></li>
+      </ul>
+    </nav>
+  </header>
+
   <slot />
-</main>
+</div>
 
 <style>
-  main, header {
-    --block-spacing-vertical: calc(var(--spacing));
+  :global(:root) {
+    --font-size: 1rem !important;
+  }
+
+  .root > header, .root > main, .root > footer {
+    padding-top: var(--spacing);
+    padding-bottom: var(--spacing);
+    /* --block-spacing-vertical: calc(var(--spacing)) !important; */
   }
   
   h1 {
