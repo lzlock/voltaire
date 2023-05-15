@@ -1,15 +1,35 @@
 <script>
+  import { createEventDispatcher } from "svelte";
+
   export let disabled = false;
   export let name;
   export let maxYearBound;
   export let minYearBound;
   export let minYear;
   export let maxYear;
+
+  let isActive = false;
+
+  const dispatch = createEventDispatcher();
+
+  const dispatchChange = () => {
+    dispatch("change", {
+      minYear,
+      maxYear,
+    });
+  };
+
+  $: isActive = minYear !== minYearBound || maxYear !== maxYearBound;
 </script>
 
 <nav>
   <details role="list">
-    <summary aria-haspopup="listbox" role="link" class="secondary">{name}</summary>
+    <summary
+      aria-haspopup="listbox"
+      role="link"
+      class={isActive ? "" : "secondary"}>
+      {name}
+    </summary>
     <ul role="listbox">
       <li>
         <label for="filter-min-year">
@@ -25,6 +45,7 @@
           min={minYearBound}
           max={maxYearBound}
           disabled={disabled}
+          on:change={dispatchChange}
         />
       </li>
       <li>
@@ -41,6 +62,7 @@
           min={minYearBound}
           max={maxYearBound}
           disabled={disabled}
+          on:change={dispatchChange}
         />
       </li>
     </ul>

@@ -116,6 +116,9 @@
       maxYearBound={maxYearBound}
       bind:minYear={minYear}
       bind:maxYear={maxYear}
+      on:change={() => {
+        pageIndex = 0;
+      }}
       disabled={loading}
     />
   </nav>
