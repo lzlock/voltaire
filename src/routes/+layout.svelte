@@ -6,7 +6,7 @@
   <header class="container-fluid">
     <nav>
       <ul>
-        <li><strong><a href="/">Voltaire Project</a></strong></li>
+        <li><strong><a href="/">Voltaire Library Project</a></strong></li>
       </ul>
       <ul>
         <li><a href="/docs">Explore</a></li>
@@ -15,6 +15,11 @@
   </header>
 
   <slot />
+
+  <footer class="container">
+    Catalogue by Lena Zlock.
+    Website by Lukas Heidemann.
+  </footer>
 </div>
 
 <style>
@@ -27,4 +32,9 @@
     padding-bottom: var(--spacing);
     /* --block-spacing-vertical: calc(var(--spacing)) !important; */
   } 
+
+  footer {
+    color: var(--secondary);
+    text-align: center;
+  }
 </style>

@@ -1,15 +1,26 @@
 <svelte:head>
-  <title>Voltaire Project</title>
+  <title>Voltaire Library Project</title>
 </svelte:head>
 
 <main class="container">
-  <h1>All of Voltaire, in one place</h1>
+  <hgroup>
+    <h1>Voltaire's Library, all in one place</h1>
+    <h2>
+      In this database you can search the entire contents of Voltaire's private library of 6,763 books.
+    </h2>
+  </hgroup>
+
   <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos
+    <a href="/docs" role="button">Explore online</a>
+    <a href="/data.csv" role="button">Download as CSV</a>
   </p>
 
   <p>
-    <a href="/docs" role="button">Explore</a>
-    <a href="/data.csv" role="button">Download</a>
+    For first-time users, please read the
+    <a href="https://voltairelibraryproject.wordpress.com/database-of-voltaires-library/">
+    introduction
+    to Voltaire’s library and to the Voltaire Library Project
+    </a>.
+    There you can find a detailed history of the collection and how subsequent institutions, most recently the National Library of Russia, have curated the library. There is also a detailed explanation of the categories used to structure the data.
   </p>
 </main>
