@@ -51,8 +51,16 @@
   onMount(async () => {
     const response = await fetch('/data.json');
     docs = await response.json();
+
+    let keys = [];
+
+    if (docs.length > 0) {
+      keys = [...Object.keys(docs[0])];
+    }
+
     const options = {
-      keys: ['Title', 'Stated date of publication'],
+      keys,
+      /* keys: ['Title', 'Stated date of publication'], */
       threshold: 0.3,
     };
     fuseDocs = new fuse(docs, options);
